@@ -5,7 +5,7 @@ library(scales)
 
 colors <- c("#5944C6", "#11AAFF", "#A2CDF4","#086ADB")
 
-data_survey <- read_excel("<FILE>")
+data_survey <- read_excel(<FILE>)
 data_survey$`Which area best fits your job?` == 'Engineer'
 attach(data_survey)
 
@@ -159,3 +159,4 @@ par(mar=c(10, 15, 5, 8))
 bar <- barplot(overall_data_sorted$data, names.arg = overall_data_sorted$names, col= c("#11AAFF", "#A2CDF4"), las=1, xlim=c(0,12), cex.names = 0.8, xlab = "Mittelwert", horiz = TRUE, main="Mittelwerte Overall")
 axis(1, at=seq(0.0,12.0, by = 1))
 text(x = overall_data_sorted$data * 0.8, y = bar, label = overall_data_sorted$data,col = "black")
+

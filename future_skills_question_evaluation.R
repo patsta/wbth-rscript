@@ -82,7 +82,7 @@ round(sd(`Self-competence`[`Which area best fits your job?` == 'Agile roles']),2
 # Median
 median(`Self-competence`[`Which area best fits your job?` == 'Agile roles'])
 
-self_efficacy_engineer <- table(`Self-competence`[`Which area best fits your job?` == 'Engineer'])
+self_competence_engineer <- table(`Self-competence`[`Which area best fits your job?` == 'Engineer'])
 self_efficacy_engineer_rel <- round(prop.table(self_efficacy_engineer),2)
 
 # Mean
