@@ -2,6 +2,7 @@ library(readxl)
 library(tidyverse)
 library(ggplot2)
 library(scales)
+options(OutDec=",")
 
 colors <- c("#5944C6", "#11AAFF", "#A2CDF4","#086ADB")
 
@@ -29,15 +30,15 @@ machine_agile <- round(mean(`Machine learning and Artificial intelligence`[`Whic
 names <- c("Development und Operations (DevOps)", 
            "Automation", 
            "Fachwissen über Cloud-Service-Plattformen", 
-           "Cloud Sicherheit", 
+           "Cloud-Sicherheit", 
            "Infrastruktur als Code",
            "Containers",
-           "Hybrid cloud",
+           "Hybrid Cloud",
            "Leistungstests, Metriken und Analysen",
            "Netzwerk-Management",
            "Datenbank-Management",
-           "Storage-Management",
-           "Machine learning und Artificial intelligence"
+           "Storage Management",
+           "Machine Learning und Artificial Intelligence"
            ) 
 data <- c(devops_agile, 
           automation_agile, 
@@ -79,15 +80,15 @@ machine_engineer <- round(mean(`Machine learning and Artificial intelligence`[`W
 names <- c("Development und Operations (DevOps)", 
            "Automation", 
            "Fachwissen über Cloud-Service-Plattformen", 
-           "Cloud Sicherheit", 
+           "Cloud-Sicherheit", 
            "Infrastruktur als Code",
            "Containers",
-           "Hybrid cloud",
+           "Hybrid Cloud",
            "Leistungstests, Metriken und Analysen",
            "Netzwerk-Management",
            "Datenbank-Management",
-           "Storage-Management",
-           "Machine learning und Artificial intelligence"
+           "Storage Management",
+           "Machine Learning und Artificial Intelligence"
 ) 
 data <- c(devops_engineer, 
           automation_engineer, 
@@ -129,15 +130,15 @@ machine_overall <- round(mean(`Machine learning and Artificial intelligence`),2)
 names <- c("Development und Operations (DevOps)", 
            "Automation", 
            "Fachwissen über Cloud-Service-Plattformen", 
-           "Cloud Sicherheit", 
+           "Cloud-Sicherheit", 
            "Infrastruktur als Code",
            "Containers",
-           "Hybrid cloud",
+           "Hybrid Cloud",
            "Leistungstests, Metriken und Analysen",
            "Netzwerk-Management",
            "Datenbank-Management",
-           "Storage-Management",
-           "Machine learning und Artificial intelligence"
+           "Storage Management",
+           "Machine Learning und Artificial Intelligence"
 ) 
 data <- c(devops_overall, 
           automation_overall, 

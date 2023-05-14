@@ -3,6 +3,8 @@ library(tidyverse)
 library(ggplot2)
 library(scales)
 
+options(OutDec=",")
+
 colors <- c("#5944C6", "#11AAFF", "#A2CDF4","#086ADB")
 
 data_survey <- read_excel(<FILE>)
@@ -188,3 +190,4 @@ programming_data_sorted <- programming_skills_data[order(programming_skills_data
 par(mar=c(10, 15, 5, 8))
 bar <- barplot(programming_data_sorted$data, names.arg = programming_data_sorted$names, col= c("#11AAFF", "#A2CDF4"), las=1, xlim=c(0,3), cex.names = 0.8, xlab = "Mittelwert", horiz = TRUE, main="Mittelwerte Programmiersprachen")
 text(x = programming_data_sorted$data * 0.8, y = bar, label = programming_data_sorted$data,col = "black")
+

@@ -2,9 +2,8 @@ library(readxl)
 library(tidyverse)
 library(ggplot2)
 library(scales)
-
+options(OutDec=",")
 colors <- c("#5944C6", "#11AAFF", "#A2CDF4","#086ADB")
-# Works only on local machine
 data_survey <- read_excel(<FILE>)
 data_survey$`Which area best fits your job?` == 'Engineer'
 attach(data_survey)
@@ -107,7 +106,7 @@ mean_importance_agile_windows <- round(mean(filtered_windows_agile_importance),2
 
 
 # Sample data
-product_names <- c("AWS", "Azure", "Cloudfoundry", "Kubernetes", "Linux", "VMware", "Windows")
+product_names <- c("AWS", "Azure", "CloudFoundry", "Kubernetes", "Linux", "VMware", "Windows")
 engineer_data <- c(mean_importance_engineer_aws, mean_importance_engineer_azure, mean_importance_engineer_cf, mean_importance_engineer_kubernetes, mean_importance_engineer_linux,mean_importance_engineer_vmware, mean_importance_engineer_windows)
 agile_data <- c(mean_importance_agile_aws, mean_importance_agile_azure, mean_importance_agile_cf, mean_importance_agile_kubernetes, mean_importance_agile_linux,mean_importance_agile_vmware, mean_importance_agile_windows)
 
@@ -122,3 +121,4 @@ bar <- barplot(data_matrix, beside = TRUE, names.arg = product_names, col = c("#
 
 legend(legend = c("Engineer", "Agile Rollen"),cex = 1.2, fill = colors, x = 18, y = 7)
 text(x = bar, y = data_sorted_by_product + 0.3, label = data_matrix,col = "black")
+

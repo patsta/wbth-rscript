@@ -4,10 +4,9 @@ library(ggplot2)
 library(scales)
 
 colors <- c("#5944C6", "#11AAFF", "#A2CDF4","#086ADB")
+options(OutDec=",")
 
 data_survey <- read_excel(<FILE>)
-data_survey$`Which area best fits your job?` == 'Engineer'
-attach(data_survey)
 
 ####################################################################################
 # Education Days
@@ -34,7 +33,7 @@ support_educations_rel_freq <- prop.table(support_education_freq)
 support_education_data <- cbind(round(support_education_freq, 4) )
 support_education_data <- round(support_educations_rel_freq, 4) * 100
 row.names(support_education_data) <- c("Nein", "Ja")
-pie(support_education_data, labels = support_education_data, col = c("#5944C6", "#11AAFF"), main="Unterstützung durch den Vorgesetzen bei der Weiterbildung")
+pie(support_education_data, labels = support_education_data, col = c("#5944C6", "#11AAFF"), main="Unterstützung durch den Vorgesetzten bei der Weiterbildung")
 legend(legend = names(support_education_data),cex = 0.9, fill = c("#5944C6", "#11AAFF"), x = 1, y = 1)
 
 ####################################################################################
@@ -135,7 +134,7 @@ mean_invest_agile <- round(mean(agile_invest_coded),2)
 
 
 # Barplot
-categories <- c("Oppertunities", "Development", "Training", "Invest")
+categories <- c("Möglichkeiten", "Entwicklung", "Training", "Investition")
 engineer_data_education <- c(mean_oppertunities_engineer, mean_development_engineer, mean_training_engineer, mean_invest_engineer)
 agile_data_education <- c(mean_oppertunities_agile, mean_development_agile, mean_training_agile, mean_invest_agile)
 
@@ -146,11 +145,9 @@ data_matrix_education <- rbind(engineer_data_education, agile_data_education)
 
 
 # Create the barplot
-par(mar=c(10, 15, 15, 8))
 bar <- barplot(data_matrix_education, beside = TRUE, names.arg = categories, col = c("#5944C6", "#11AAFF"),
-               main = "Fragen zur Ausbildung bei der <Company>", xlab = "Frage Kategorie", ylab = "Mittelwert", ylim=c(0,5), cex.names = 0.8)
+               main = "Fragen zur Ausbildung bei <Company>", xlab = "Frage Kategorie", ylab = "Mittelwert", ylim=c(0,5), cex.names = 0.8)
 
-legend(legend = c("Engineer", "Agile Rollen"),cex = 1.2, fill = colors, x = 10, y = 5.5 )
 text(x = bar, y = data_sorted_by_category + 0.2, label = data_matrix_education,col = "black")
 
 
@@ -294,7 +291,7 @@ filtered_web_agile <- `Web Based Training`[`Which area best fits your job?` == '
 mean_web_agile <- round(mean(filtered_web_agile),2)
 
 # Barplot
-education_formats <- c("Brown Bag", "Classroom", "CoP", "Hackathon", "PoC", "Virtual", "Web Based")
+education_formats <- c("Brownbag", "Classroom", "CoP", "Hackathon", "PoC", "Virtual", "Web-based")
 engineer_data_education_formats <- c(mean_brownbag_engineer, mean_classroom_engineer, mean_community_engineer, mean_hackathon_engineer, mean_poc_engineer, mean_virtual_engineer, mean_web_engineer)
 agile_data_education_formats <- c(mean_brownbag_agile, mean_classroom_agile, mean_community_agile, mean_hackathon_agile, mean_poc_agile, mean_virtual_agile, mean_web_agile)
 
@@ -307,8 +304,7 @@ data_matrix_education_format <- rbind(engineer_data_education_formats, agile_dat
 bar <- barplot(data_matrix_education_format, beside = TRUE, names.arg = education_formats, col = c("#5944C6", "#11AAFF"),
                main = "Ausbildungsvarianten nach Rollen", xlab = "Typ", ylab = "Mittelwert", ylim=c(0,7), cex.names = 0.8)
 
-legend(legend = c("Engineer", "Agile Rollen"),cex = 1.2, fill = colors, x = 16, y = 7)
-text(x = bar, y = data_sorted_by_format + 0.2, label = data_matrix_education_format,col = "black")
+text(x = bar, y = data_sorted_by_format + 0.4, label = data_matrix_education_format,col = "black")
 
 ####################################################################################
 # Education Formats Ranking - Overall Brown Bag
@@ -358,13 +354,13 @@ filtered_web_overall <- `Web Based Training`
 
 mean_web_overall <- round(mean(filtered_web_overall),2)
 
-education_formats <- c("Brown Bag", 
+education_formats <- c("Brownbag", 
                        "Classroom", 
                        "CoP", 
                        "Hackathon", 
                        "PoC", 
                        "Virtual",
-                       "Web Based")
+                       "Web-based")
 
 overall_data_education_formats <- c(mean_brownbag_overall, 
                                     mean_classroom_overall, 
@@ -386,6 +382,6 @@ formats_data_sorted  <- formats_data[order(formats_data$overall_data_education_f
 bar <- barplot(formats_data_sorted$overall_data_education_formats, beside = TRUE, names.arg = formats_data_sorted$education_formats, col = c("#5944C6", "#11AAFF"),
                main = "Ausbildungsvarianten Overall", xlab = "Typ", ylab = "Mittelwert", ylim=c(0,7), cex.names = 0.8)
 
-text(x = bar, y = formats_data_sorted$overall_data_education_formats + 0.2, label = formats_data_sorted$overall_data_education_formats,col = "black")
+text(x = bar, y = formats_data_sorted$overall_data_education_formats + 0.4, label = formats_data_sorted$overall_data_education_formats,col = "black")
 
 

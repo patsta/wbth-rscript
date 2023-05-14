@@ -2,11 +2,11 @@ library(readxl)
 library(tidyverse)
 library(ggplot2)
 library(scales)
-
+options(OutDec=",")
 colors <- c("#5944C6", "#11AAFF", "#A2CDF4","#086ADB")
 
-data_survey <- read_excel(<FILE>)
-data_survey$`Which area best fits your job?` == 'Engineer'
+data_survey <- read_excel(<FILE_NAME>)
+
 attach(data_survey)
 ####################################################################################
 # Get overview of participants - Age Group
@@ -16,7 +16,7 @@ age_freq_with_sum <- addmargins(table(`Which of the following age group do you b
 age_rel_freq <- prop.table(age_freq)
 age_data <- cbind(round(age_rel_freq, 4) )
 age_data <- round(age_rel_freq, 4) * 100
-row.names(age_data) <- c("18-24","25-34","35-44","45 und älter")
+row.names(age_data) <- c("18–24","25–34","35–44","45 und älter")
 pie(age_data, labels = age_data, col=colors, main="Aufteilung nach Alterskategorie")
 legend(legend = names(age_data),cex = 0.9, fill = colors, x = 0.9, y = 1)
 
